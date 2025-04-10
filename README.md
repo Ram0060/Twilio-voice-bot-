@@ -51,7 +51,26 @@ docker build -t voice-ai-agent .
 docker run -p 8000:8000 --env-file .env voice-ai-agent
 
 ☁️ Cloud Run 
+
+Deploy
+🐳 Uses Google Cloud Build to containerize and deploy the app.
+
+"gcloud builds submit --tag gcr.io/openAI/voice-agent"
+Deploy to Cloud Run
+
+gcloud run deploy voice-agent \
+  --image gcr.io/openAI/voice-agent \
+  --platform managed \
+  --region us-central1 \
+  --allow-unauthenticated \
+  --set-env-vars-file .env.yaml \
+  --service-account your-service-account@your-project.iam.gserviceaccount.com
+
+
+
+
 Go to Twilio Console
+
 
 Create a new phone number
 
@@ -92,6 +111,8 @@ Review the conversation in your GCS bucket
 
 🔊 Audio responses and user input saved as .mp3 or .wav
 """
+
+Audio + transcript uploaded to GCS Bucket. 
 
 
 
